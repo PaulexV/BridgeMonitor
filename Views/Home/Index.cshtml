@@ -1,8 +1,38 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@using System.Globalization
+@model List<BridgeInfos>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Prochaine Fermeture</h1>
+
+@{
+    var SortedListOfClosing = Model.OrderBy(closing =>
+            Convert.ToDateTime(closing.ClosingDate)).ToList();
+
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cause / Bateau</th>
+            <th>Date de la fermeture</th>
+            <th>Heure de réouverture</th>
+            <th>Durée de la prochaine fermeture</th>
+            <th>Décompte</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var boat in SortedListOfClosing)
+        {
+            var duree = boat.ReopeningDate - boat.ClosingDate;
+            if (DateTime.Now < boat.ClosingDate)
+            {
+                <tr>
+                    <td>@boat.BoatName</td>
+                    <td>@boat.ClosingDate.ToString("F", CultureInfo.CreateSpecificCulture("fr-FR"))</td>
+                    <td>@boat.ReopeningDate.ToString("F", CultureInfo.CreateSpecificCulture("fr-FR"))</td>
+                    <td>@duree</td>
+                    <td></td>
+                </tr>
+                break;
+            }
+        }
+    </tbody>
+</table>

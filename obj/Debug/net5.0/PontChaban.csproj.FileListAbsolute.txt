@@ -38,3 +38,4 @@
 /home/paulex/Ynov/dotNET/PontChaban/obj/Debug/net5.0/PontChaban.pdb
 /home/paulex/Ynov/dotNET/PontChaban/obj/Debug/net5.0/PontChaban.genruntimeconfig.cache
 /home/paulex/Ynov/dotNET/PontChaban/obj/Debug/net5.0/PontChaban.csproj.CopyComplete
+/home/paulex/Ynov/dotNET/PontChaban/bin/Debug/net5.0/Newtonsoft.Json.dll

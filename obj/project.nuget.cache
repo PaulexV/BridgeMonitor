@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4fotJddnhmpAfmzWt4dFpJH7XNxdg00vsYbpfMW1HUPfK2WD+Qj9X3juMDSb+iS0kfvBmDBUWxUR0+MWAxeUlA==",
+  "dgSpecHash": "aCUIkPkd4zNJ/vXoGD8I6IPYpuJYxmRw6bhZLoSuiC3FZ4K7PpiLDhqwkJvQUqfUPMWW0K0v5yGBPmRybt5bpA==",
   "success": true,
   "projectFilePath": "/home/paulex/Ynov/dotNET/PontChaban/PontChaban.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/home/paulex/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
   "logs": []
 }
