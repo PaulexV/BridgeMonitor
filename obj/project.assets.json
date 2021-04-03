@@ -53,11 +53,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/paulex/Ynov/dotNET/PontChaban/PontChaban.csproj",
+      "projectUniqueName": "/home/paulex/Ynov/dotNET/BridgeMonitor/PontChaban.csproj",
       "projectName": "PontChaban",
-      "projectPath": "/home/paulex/Ynov/dotNET/PontChaban/PontChaban.csproj",
+      "projectPath": "/home/paulex/Ynov/dotNET/BridgeMonitor/PontChaban.csproj",
       "packagesPath": "/home/paulex/.nuget/packages/",
-      "outputPath": "/home/paulex/Ynov/dotNET/PontChaban/obj/",
+      "outputPath": "/home/paulex/Ynov/dotNET/BridgeMonitor/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/paulex/.nuget/NuGet/NuGet.Config"

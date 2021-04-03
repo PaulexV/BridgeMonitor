@@ -3,11 +3,6 @@
 
 <h1>Prochaine Fermeture</h1>
 
-@{
-    var SortedListOfClosing = Model.OrderBy(closing =>
-            Convert.ToDateTime(closing.ClosingDate)).ToList();
-
-}
 <table class="table">
     <thead>
         <tr>
@@ -19,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var boat in SortedListOfClosing)
+        @foreach (var boat in Model)
         {
             var duree = boat.ReopeningDate - boat.ClosingDate;
             if (DateTime.Now < boat.ClosingDate)
@@ -29,7 +24,23 @@
                     <td>@boat.ClosingDate.ToString("F", CultureInfo.CreateSpecificCulture("fr-FR"))</td>
                     <td>@boat.ReopeningDate.ToString("F", CultureInfo.CreateSpecificCulture("fr-FR"))</td>
                     <td>@duree</td>
-                    <td></td>
+                    <td>
+                        <div id="countdown"></div>
+                        <p id="nextclose" style="display: none;">@boat.ClosingDate.ToString("o")</p>
+                        <script>
+                            var countDownDate = new Date(document.getElementById("nextclose").innerHTML).getTime()
+                            var x = setInterval(function () {
+                                var now = new Date().getTime();
+                                var distance = countDownDate - now;
+                                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                document.getElementById("countdown").innerHTML = "Encore " + days + " jour(s), " + hours + " heure(s) "
+                                    + minutes + " minutes et " + seconds + " secondes avant la prochaine fermeture";
+                            }, 1000);
+                        </script>
+                    </td>
                 </tr>
                 break;
             }

@@ -42,7 +42,9 @@ namespace PontChaban.Controllers
             var stringTask = client.GetStringAsync("https://api.alexandredubois.com/pont-chaban/api.php");
             var myJsonResponse = stringTask.Result;
             var result = JsonConvert.DeserializeObject<List<BridgeInfos>>(myJsonResponse);
-            return result;
+            var SortedListOfClosing = result.OrderBy(closing =>
+            Convert.ToDateTime(closing.ClosingDate)).ToList();
+            return SortedListOfClosing;
         }
     }
 }
