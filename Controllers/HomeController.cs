@@ -26,11 +26,16 @@ namespace PontChaban.Controllers
             return View(closing);
         }
 
-        public IActionResult Privacy()
+        public IActionResult AllClosing()
         {
-            return View();
+            var closing = GetBridgeInfosFromApi();
+            return View(closing);
         }
-
+        public IActionResult Details()
+        {
+            var closing = GetBridgeInfosFromApi();
+            return View(closing);
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
@@ -44,6 +49,10 @@ namespace PontChaban.Controllers
             var result = JsonConvert.DeserializeObject<List<BridgeInfos>>(myJsonResponse);
             var SortedListOfClosing = result.OrderBy(closing =>
             Convert.ToDateTime(closing.ClosingDate)).ToList();
+            for (var i = 0; i < SortedListOfClosing.Count; i++)
+            {
+                SortedListOfClosing[i].Id = i;
+            }
             return SortedListOfClosing;
         }
     }

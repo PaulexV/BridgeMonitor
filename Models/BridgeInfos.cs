@@ -18,6 +18,7 @@ namespace PontChaban.Models
 
         [JsonProperty("reopening_date")]
         public DateTime ReopeningDate { get; set; }
+        public int Id { get; set; }
     }
 
 }

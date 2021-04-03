@@ -1,0 +1,65 @@
+@using System.Globalization
+@model List<BridgeInfos>
+
+<h1>Prochaine Fermeture</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Cause / Bateau</th>
+            <th>Date de la fermeture</th>
+            <th>Heure de réouverture</th>
+            <th>Durée de la prochaine fermeture</th>
+            <th>Décompte</th>
+            <th>Risque de bouchons</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var boat in Model)
+        {
+            var duree = boat.ReopeningDate - boat.ClosingDate;
+            var routeId = Url.ActionContext.RouteData.Values["id"];
+
+            if (Convert.ToInt32(routeId) == boat.Id)
+            {
+                <tr>
+                    <td>@boat.BoatName</td>
+                    <td>@boat.ClosingDate.ToString("F", CultureInfo.CreateSpecificCulture("fr-FR"))</td>
+                    <td>@boat.ReopeningDate.ToString("F", CultureInfo.CreateSpecificCulture("fr-FR"))</td>
+                    <td>@duree</td>
+                    <td>
+                        <div id="countdown"></div>
+                        <p id="nextclose" style="display: none;">@boat.ClosingDate.ToString("o")</p>
+                        <script>
+                            var countDownDate = new Date(document.getElementById("nextclose").innerHTML).getTime()
+                            var x = setInterval(function () {
+                                var now = new Date().getTime();
+                                var distance = countDownDate - now;
+                                var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                                document.getElementById("countdown").innerHTML = "Encore " + days + " jour(s), " + hours + " heure(s) "
+                                    + minutes + " minutes et " + seconds + " secondes avant la prochaine fermeture";
+                                if (distance < 0) {
+                                    clearInterval(x);
+                                    document.getElementById("countdown").innerHTML = "Cette fermeture est terminée";
+                                }
+                            }, 1000);
+                        </script>
+                    </td>
+                    @if ((7 <= boat.ClosingDate.Hour & boat.ClosingDate.Hour <= 9) | (17 <= boat.ClosingDate.Hour &
+            boat.ClosingDate.Hour <= 19))
+                    {
+                        <td>Elevé</td>
+                    }
+                    else
+                    {
+                        <td>Faible</td>
+                    }
+                </tr>
+                break;
+            }
+        }
+    </tbody>
+</table>

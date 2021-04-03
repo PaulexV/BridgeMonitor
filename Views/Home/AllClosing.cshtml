@@ -1,0 +1,59 @@
+@using System.Globalization
+@section Stylesheets{<link rel="stylesheet" href="~/css/Stylesheet.css"> }
+@model List<BridgeInfos>
+
+<h1>Toutes les Fermetures</h1>
+
+<table>
+    <h2>Fermetures Passées</h2>
+    <thead>
+        <tr>
+            <th>Cause / Bateau</th>
+            <th>Date de la fermeture</th>
+            <th>Durée de la prochaine fermeture</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var boat in Model)
+        {
+            var duree = boat.ReopeningDate - boat.ClosingDate;
+
+            if (DateTime.Now > boat.ClosingDate)
+            {
+                <tr>
+                    <td>@boat.BoatName</td>
+                    <td>@boat.ClosingDate.ToString("F", CultureInfo.CreateSpecificCulture("fr-FR"))</td>
+                    <td>@duree</td>
+                    <td><a asp-area="" asp-controller="Home" asp-action="Details" asp-route-id="@boat.Id">Détails</a></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<table>
+    <h2>Fermetures Futures</h2>
+    <thead>
+        <tr>
+            <th>Cause / Bateau</th>
+            <th>Date de la fermeture</th>
+            <th>Durée de la prochaine fermeture</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var boat in Model)
+        {
+            var duree = boat.ReopeningDate - boat.ClosingDate;
+
+            if (DateTime.Now < boat.ClosingDate)
+            {
+                <tr>
+                    <td>@boat.BoatName</td>
+                    <td>@boat.ClosingDate.ToString("F", CultureInfo.CreateSpecificCulture("fr-FR"))</td>
+                    <td>@duree</td>
+                    <td><a asp-area="" asp-controller="Home" asp-action="Details" asp-route-id="@boat.Id">Détails</a></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
