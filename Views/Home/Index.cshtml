@@ -11,12 +11,14 @@
             <th>Heure de réouverture</th>
             <th>Durée de la prochaine fermeture</th>
             <th>Décompte</th>
+            <th>Risque de bouchons</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var boat in Model)
         {
             var duree = boat.ReopeningDate - boat.ClosingDate;
+
             if (DateTime.Now < boat.ClosingDate)
             {
                 <tr>
@@ -41,6 +43,15 @@
                             }, 1000);
                         </script>
                     </td>
+                    @if ((7 <= boat.ClosingDate.Hour & boat.ClosingDate.Hour <= 9) | (17 <= boat.ClosingDate.Hour &
+            boat.ClosingDate.Hour <= 19))
+                    {
+                        <td>Elevé</td>
+                    }
+                    else
+                    {
+                        <td>Faible</td>
+                    }
                 </tr>
                 break;
             }
