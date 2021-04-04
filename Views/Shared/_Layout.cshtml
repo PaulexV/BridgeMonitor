@@ -30,6 +30,10 @@
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home"
                                     asp-action="AllClosing">Toutes les Fermetures</a>
                             </li>
+                            <li class="nav-item">
+                                <input type="button" onclick="location.href='@Url.Action("DownloadCalendar")'"
+                                    value="Calendrier des Fermetures">
+                            </li>
                         </ul>
                     </div>
                 </div>

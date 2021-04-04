@@ -15633,6 +15633,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "/home/paulex/Ynov/dotNET/BridgeMonitor/Views/Home/DownloadCalendar.cshtml",
+      "TargetPath": "Views\\Home\\DownloadCalendar.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "/home/paulex/Ynov/dotNET/BridgeMonitor/Views/_ViewStart.cshtml",
       "TargetPath": "Views\\_ViewStart.cshtml",
       "FileKind": "mvc"

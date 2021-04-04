@@ -81,3 +81,4 @@
 /home/paulex/Ynov/dotNET/BridgeMonitor/obj/Debug/net5.0/PontChaban.genruntimeconfig.cache
 /home/paulex/Ynov/dotNET/BridgeMonitor/obj/Debug/net5.0/Razor/Views/Home/AllClosing.cshtml.g.cs
 /home/paulex/Ynov/dotNET/BridgeMonitor/obj/Debug/net5.0/Razor/Views/Home/Details.cshtml.g.cs
+/home/paulex/Ynov/dotNET/BridgeMonitor/obj/Debug/net5.0/Razor/Views/Home/DownloadCalendar.cshtml.g.cs

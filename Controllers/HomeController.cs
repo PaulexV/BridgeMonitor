@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -11,6 +12,7 @@ using PontChaban.Models;
 
 namespace PontChaban.Controllers
 {
+
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -32,6 +34,11 @@ namespace PontChaban.Controllers
             return View(closing);
         }
         public IActionResult Details()
+        {
+            var closing = GetBridgeInfosFromApi();
+            return View(closing);
+        }
+        public IActionResult DownloadCalendar()
         {
             var closing = GetBridgeInfosFromApi();
             return View(closing);
